@@ -1,4 +1,4 @@
-Notes App CLI (CRUD) with **TypeScript** !!!
+# Notes App CLI (CRUD) with **TypeScript** !!!
 
 A small note app cli purpose to : 
 
