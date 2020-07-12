@@ -22,8 +22,8 @@ export const readNote = () => {
         singleLine: true
     };
     const data = [
-        datas.map((data) => {
-            [`${data.title}`, `${data.body}`]
+        parseData.map((data: any) => {
+            return [`${data.title} : ${data.body}`]
         })
     ];
     const output = table(data, config);
