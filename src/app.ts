@@ -1,7 +1,16 @@
 import * as yargs from "yargs"
-import { addNote } from "./note"
+import { createNote, readNote } from "./note"
 
 yargs.version("1.0.0")
+
+
+yargs.command({
+    command: "read",
+    describe: "Read notes.",
+    handler: () => {
+        readNote()
+    }
+})
 
 yargs.command({
     command: "add",
@@ -18,9 +27,8 @@ yargs.command({
             demandOption: true
         },
     },
-    handler: ({ $0, _ }) => {
-        // console.log("hi", argv)
-        addNote($0, $0)
+    handler: (args) => {
+        createNote({ body: args.title, title: args.body })
     }
 })
 
