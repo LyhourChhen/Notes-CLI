@@ -2,10 +2,10 @@ Notes App CLI (CRUD) with **TypeScript** !!!
 
 A small note app cli purpose to : 
 
-    - **CREATE** Note 
-    - **READ** Note 
-    - **UPDATE** Note
-    - **DELETE** Note 
+   - **CREATE** Note 
+   - **READ** Note 
+   - **UPDATE** Note
+   - **DELETE** Note 
 
 ## Objective 
  - Understand about TypeScipt in the higher level.
@@ -19,4 +19,4 @@ A small note app cli purpose to :
 
 ### Author 
 - **@LyhourChhen**
-# Notes-CLI
+
