@@ -13,7 +13,6 @@ A small note app cli purpose to :
 ## Objective 
  - Understand about TypeScipt in the higher level.
  - Lavarage the CLI application with NodeJS.
- - Understand the basic programming to getting start with this field.
 
 
 ## Dependency 
