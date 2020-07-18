@@ -8,7 +8,7 @@ A small note app cli purpose to :
    - **DELETE** Note 
 
 ## Demo 
-<script id="asciicast-IfkzNEfPd95T2LYRpX4pdDfaC" src="https://asciinema.org/a/IfkzNEfPd95T2LYRpX4pdDfaC.js" async></script>
+[![asciicast](https://asciinema.org/a/IfkzNEfPd95T2LYRpX4pdDfaC.svg)](https://asciinema.org/a/IfkzNEfPd95T2LYRpX4pdDfaC)
 
 ## Objective 
  - Understand about TypeScipt in the higher level.
