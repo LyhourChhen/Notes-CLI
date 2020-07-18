@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import * as _ from "lodash";
 
 interface NoteInterface {
-  id?: string;
+  id?: any;
   title: any;
   body: any;
 }
@@ -69,7 +69,9 @@ export const deleteNote = (id: any) => {
   saveNotes(removeNote);
 };
 
-export const modifiedNote = () => {};
+export const modifiedNote = (args: NoteInterface) => {
+  const notes = loadNote();
+};
 
 // Function Helper
 

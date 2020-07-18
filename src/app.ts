@@ -1,5 +1,5 @@
 import * as yargs from "yargs";
-import { createNote, readNote, deleteNote } from "./note";
+import { createNote, readNote, deleteNote, modifiedNote } from "./note";
 
 yargs.version("1.0.0");
 
@@ -43,6 +43,31 @@ yargs.command({
   },
   handler: (args) => {
     deleteNote(args.id);
+  },
+});
+
+yargs.command({
+  command: "edit",
+  describe: "edit note into App.",
+  builder: {
+    id: {
+      describe: "Note's id",
+      type: "string",
+      demandOption: true,
+    },
+    title: {
+      describe: "Note's title",
+      type: "string",
+      demandOption: true,
+    },
+    body: {
+      describe: "Note's Body",
+      type: "string",
+      demandOption: true,
+    },
+  },
+  handler: (args) => {
+    modifiedNote({ id: args.id, body: args.title, title: args.body });
   },
 });
 
