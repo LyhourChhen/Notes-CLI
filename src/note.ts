@@ -1,7 +1,10 @@
 import fs from "fs";
 import { table, getBorderCharacters } from "table";
+import { v4 as uuidv4 } from "uuid";
+import * as _ from "lodash";
 
 interface NoteInterface {
+  id?: string;
   title: any;
   body: any;
 }
@@ -33,6 +36,7 @@ export const createNote = (args: any): void => {
   });
   if (duplicatedNotes.length === 0) {
     notes.push({
+      id: uuidv4(),
       title: args.title,
       body: args.body,
     });
@@ -46,13 +50,34 @@ export const createNote = (args: any): void => {
   saveNotes(notes);
 };
 
+export const deleteNote = (id: any) => {
+  const notes = loadNote();
+
+  //   This is wrong
+  const removeNote_ = _.remove(notes, (note) => {
+    note.id === id;
+  });
+
+  const removeNote = notes.filter((note) => {
+    if (id !== note.id) {
+      throw "Id not found";
+    }
+    return note.id !== id;
+  });
+
+  // @ts-ignore
+  saveNotes(removeNote);
+};
+
+export const modifiedNote = () => {};
+
 // Function Helper
 
 const loadNote = (): Array<NoteInterface> => {
   try {
     const dataBuffer = fs.readFileSync("./db/db.json");
     const dataJSON = dataBuffer.toString();
-    return [JSON.parse(dataJSON)];
+    return JSON.parse(dataJSON);
   } catch (error) {
     return [];
   }

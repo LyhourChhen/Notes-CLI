@@ -1,5 +1,5 @@
 import * as yargs from "yargs";
-import { createNote, readNote } from "./note";
+import { createNote, readNote, deleteNote } from "./note";
 
 yargs.version("1.0.0");
 
@@ -28,6 +28,21 @@ yargs.command({
   },
   handler: (args) => {
     createNote({ body: args.title, title: args.body });
+  },
+});
+
+yargs.command({
+  command: "delete",
+  describe: "Delete note in the app.",
+  builder: {
+    id: {
+      describe: "Note's title",
+      type: "string",
+      demandOption: true,
+    },
+  },
+  handler: (args) => {
+    deleteNote(args.id);
   },
 });
 

@@ -11,11 +11,15 @@
     "start": "ts-node src/app.ts"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.157",
     "@types/node": "^14.0.22",
     "@types/table": "^5.0.0",
+    "@types/uuid": "^8.0.0",
     "@types/yargs": "^15.0.5",
+    "lodash": "^4.17.19",
     "table": "^5.4.6",
     "typescript": "^3.9.6",
+    "uuid": "^8.2.0",
     "yargs": "^15.4.1"
   },
   "devDependencies": {
