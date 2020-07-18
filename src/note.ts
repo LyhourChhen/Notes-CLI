@@ -36,18 +36,19 @@ export const createNote = (args: any): void => {
       title: args.title,
       body: args.body,
     });
+    // @ts-ignore
     saveNotes(notes);
     console.log("New Note Added !");
   } else {
     console.log("note is taken");
   }
-
+  // @ts-ignore
   saveNotes(notes);
 };
 
 // Function Helper
 
-const loadNote = (): Array<string> => {
+const loadNote = (): Array<NoteInterface> => {
   try {
     const dataBuffer = fs.readFileSync("./db/db.json");
     const dataJSON = dataBuffer.toString();
