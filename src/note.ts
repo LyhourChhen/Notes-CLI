@@ -1,5 +1,5 @@
 import fs from "fs";
-import { table, getBorderCharacters } from "table";
+import * as chalk from "chalk";
 import { v4 as uuidv4 } from "uuid";
 import * as _ from "lodash";
 
@@ -10,22 +10,11 @@ interface NoteInterface {
 }
 
 export const readNote = (): void => {
-  const datas = [];
-  const getNote = fs.readFileSync("./db/db.json");
-  const jsonNote = getNote.toString();
-  const parseData = JSON.parse(jsonNote);
-  datas.push(parseData);
+  const notes = loadNote();
 
-  const config = {
-    singleLine: true,
-  };
-  const data = [
-    parseData.map((data: any) => {
-      return [`${data.title} : ${data.body}`];
-    }),
-  ];
-  const output = table(data, config);
-  console.log(output);
+  notes.map((note) => {
+    console.log(`| ${note.id} | ${note.title} | ${note.body} |`);
+  });
 };
 
 export const createNote = (args: any): void => {

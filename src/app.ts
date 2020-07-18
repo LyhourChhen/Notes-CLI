@@ -70,5 +70,3 @@ yargs.command({
     modifiedNote({ id: args.id, body: args.title, title: args.body });
   },
 });
-
-console.log("render args", yargs.argv);
