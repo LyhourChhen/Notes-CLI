@@ -1,44 +1,63 @@
-import fs from "fs"
-import {
-    table,
-    getBorderCharacters
-} from 'table';
-
+import fs from "fs";
+import { table, getBorderCharacters } from "table";
 
 interface NoteInterface {
-    title: any;
-    body: any;
+  title: any;
+  body: any;
 }
 
+export const readNote = (): void => {
+  const datas = [];
+  const getNote = fs.readFileSync("./db/db.json");
+  const jsonNote = getNote.toString();
+  const parseData = JSON.parse(jsonNote);
+  datas.push(parseData);
 
-export const readNote = () => {
-    const datas = []
-    const getNote = fs.readFileSync("./db/db.json");
-    const jsonNote = getNote.toString();
-    const parseData = JSON.parse(jsonNote)
-    datas.push(parseData)
+  const config = {
+    singleLine: true,
+  };
+  const data = [
+    parseData.map((data: any) => {
+      return [`${data.title} : ${data.body}`];
+    }),
+  ];
+  const output = table(data, config);
+  console.log(output);
+};
 
-    const config = {
-        singleLine: true
-    };
-    const data = [
-        parseData.map((data: any) => {
-            return [`${data.title} : ${data.body}`]
-        })
-    ];
-    const output = table(data, config);
-    console.log(output);
-}
+export const createNote = (args: any): void => {
+  const notes = loadNote();
+  // Check duplocated note
+  const duplicatedNotes = notes.filter((note: any) => {
+    return note.title === args.title;
+  });
+  if (duplicatedNotes.length === 0) {
+    notes.push({
+      title: args.title,
+      body: args.body,
+    });
+    saveNotes(notes);
+    console.log("New Note Added !");
+  } else {
+    console.log("note is taken");
+  }
 
+  saveNotes(notes);
+};
 
-export const createNote = (args: NoteInterface): void => {
-    const note: Object = {
-        title: args.title,
-        body: args.body
-    }
-    const jsonNote = JSON.stringify(note)
-    fs.writeFileSync("./db/db.json", jsonNote)
-}
+// Function Helper
 
+const loadNote = (): Array<string> => {
+  try {
+    const dataBuffer = fs.readFileSync("./db/db.json");
+    const dataJSON = dataBuffer.toString();
+    return [JSON.parse(dataJSON)];
+  } catch (error) {
+    return [];
+  }
+};
 
-
+const saveNotes = (note: NoteInterface): void => {
+  const dataJSON = JSON.stringify(note);
+  fs.writeFileSync("./db/db.json", dataJSON);
+};
