@@ -11,9 +11,8 @@ interface NoteInterface {
 
 export const readNote = (): void => {
   const notes = loadNote();
-
   notes.map((note) => {
-    console.log(`| ${note.id} | ${note.title} | ${note.body} |`);
+    return console.log(`| ${note.id} | ${note.title} | ${note.body} |`);
   });
 };
 

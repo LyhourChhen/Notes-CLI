@@ -70,3 +70,5 @@ yargs.command({
     modifiedNote({ id: args.id, body: args.title, title: args.body });
   },
 });
+
+yargs.parse();
