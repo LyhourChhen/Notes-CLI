@@ -1,6 +1,6 @@
 # Notes App CLI (CRUD) with **TypeScript** !!!
 
-A small note app cli purpose to : 
+**A small note app cli purpose to :** 
 
    - **CREATE** Note 
    - **READ** Note 
